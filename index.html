@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#100d1b">
+<meta name="description" content="SabiMood — Life Teacher AI for Nigerian teenagers">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<title>SabiMood — Life Teacher AI</title>
+<style>
+:root{--bg:#100d1b;--panel:#211a2d;--panel2:#2b2040;--purple:#8b50e8;--orange:#f2a43e;--yellow:#ffd36a;--muted:#c3b5d7;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 90% 0%,#33204d 0,transparent 34%),var(--bg);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+.app{max-width:760px;margin:auto;padding:16px 16px 30px}.top{display:flex;align-items:center;gap:12px;padding:8px 0 18px}.logo{width:54px;height:54px;border-radius:17px;background:linear-gradient(135deg,#a66bff,#6734b5);display:grid;place-items:center;font-size:30px;box-shadow:0 8px 25px #0005}.brand{font-weight:900;font-size:22px;letter-spacing:.2px}.sub{font-size:11px;color:#c9aaff;letter-spacing:1.5px;font-weight:700}.online{margin-left:auto;background:#173b30;color:#8df0bc;border-radius:30px;padding:7px 10px;font-size:11px}
+nav{display:flex;gap:8px;margin-bottom:18px}nav button{flex:1;border:0;border-radius:13px;padding:12px 5px;background:#241c32;color:#e9dfff;font-weight:700}nav button.active{background:#7541bb;color:white}
+.hero{background:linear-gradient(130deg,#3b2358,#241638);padding:20px;border-radius:24px;margin-bottom:20px}.eyebrow{font-size:11px;color:#d6baff;font-weight:800;letter-spacing:1.2px}.hero h1{font-size:26px;line-height:1.18;margin:9px 0}.hero p{color:#d0c3e4;margin:0;font-size:14px;line-height:1.5}.robot{font-size:46px;margin-top:12px}.section-title{font-size:16px;font-weight:850;margin:20px 0 12px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.card{background:var(--panel);border:1px solid #ffffff12;border-radius:19px;padding:16px;color:white;text-align:left;min-height:128px;cursor:pointer;transition:.15s}.card:active{transform:scale(.98)}.emoji{font-size:29px}.card strong{display:block;font-size:16px;margin:9px 0 3px}.card small{color:#c4b7d3;font-size:12px}.weather{grid-column:1/-1;min-height:100px}.tip{background:#352347;border-radius:18px;padding:16px;margin-top:18px}.tip b{color:var(--yellow)}.tip p{margin:8px 0 0;color:#eee;font-size:14px;line-height:1.5}
+#chat{display:none}.chatbox{background:#171321;border-radius:20px;padding:13px;min-height:300px;max-height:55vh;overflow:auto;display:flex;flex-direction:column;gap:12px}.bubble{max-width:88%;padding:12px 14px;border-radius:17px;font-size:14px;line-height:1.5;white-space:pre-wrap}.ai{align-self:flex-start;background:#30273c}.user{align-self:flex-end;background:#7541bb}.sender{display:block;font-size:10px;color:#c5a6f4;font-weight:800;margin-bottom:4px}.composer{display:flex;gap:8px;margin-top:12px}.composer input{min-width:0;flex:1;background:#241b32;border:1px solid #59456f;border-radius:14px;padding:14px;color:white;font-size:15px;outline:none}.composer button,.primary{border:0;background:var(--orange);color:#241638;font-weight:850;border-radius:14px;padding:0 17px;cursor:pointer}.suggestions{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.suggestions button{background:#30243f;border:0;color:#e3d2fa;padding:9px 11px;border-radius:20px;font-size:12px}
+.screen{display:none}.screen.show{display:block}.notice{font-size:11px;color:#a99ab9;line-height:1.5;margin-top:12px}.back{background:none;border:0;color:#d8c4f5;font-weight:700;padding:8px 0;cursor:pointer}.footer{text-align:center;color:#8e819e;font-size:11px;margin:26px 0 4px}
+@media(min-width:600px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.weather{grid-column:auto}.hero{display:flex;align-items:center;justify-content:space-between}.robot{font-size:66px;margin:0}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="logo">🤖</div><div><div class="brand">SabiMood</div><div class="sub">LIFE TEACHER AI 🇳🇬</div></div><div class="online">● READY</div></header>
+<nav><button id="homeTab" class="active" onclick="showScreen('home')">⌂ Home</button><button id="chatTab" onclick="showScreen('chat')">◉ AI Chat</button><button id="tipTab" onclick="showScreen('tip')">✦ Daily tip</button></nav>
+<main id="home" class="screen show">
+<section class="hero"><div><div class="eyebrow">WELCOME TO YOUR CLASSROOM</div><h1>Hi! What do you want to learn today? 👋</h1><p>Your friendly learning companion. Ask questions and get simple, clear explanations.</p></div><div class="robot">🤖😎</div></section>
+<div class="section-title">Explore your classroom</div>
+<div class="cards">
+<button class="card" onclick="ask('What should I cook today?')"><span class="emoji">🍲</span><strong>Food</strong><small>Affordable Nigerian meals</small></button>
+<button class="card" onclick="ask('Help me study and pass my exams')"><span class="emoji">📚</span><strong>Study</strong><small>Homework, exams and learning</small></button>
+<button class="card" onclick="ask('Give me a simple home workout')"><span class="emoji">💪</span><strong>Exercise</strong><small>Get stronger at home</small></button>
+<button class="card" onclick="ask('How can I plan my day and manage money?')"><span class="emoji">🌟</span><strong>Daily Life</strong><small>Money, confidence and planning</small></button>
+<button class="card weather" onclick="ask('Will it rain tomorrow in Port Harcourt?')"><span class="emoji">🌦️</span><strong>Weather</strong><small>Port Harcourt forecast</small></button>
+</div>
+<section class="tip"><b>✨ TODAY'S LIFE TIP</b><p id="dailyTip">Small steps every day lead to big results. Keep learning!</p></section>
+</main>
+<section id="chat" class="screen">
+<button class="back" onclick="showScreen('home')">← Back to home</button>
+<div class="section-title">🤖 Chat with SabiMood</div>
+<div class="chatbox" id="chatbox"><div class="bubble ai"><span class="sender">SABIMOOD</span>Hi! 👋 I'm SabiMood. What do you want to learn today? Ask me anything. I'll explain it in simple English.</div></div>
+<div class="suggestions"><button onclick="fill('Explain maths to me')">Explain maths</button><button onclick="fill('How do I pass exams?')">Pass exams</button><button onclick="fill('What should I cook?')">Food ideas</button><button onclick="fill('Give me a workout')">Home workout</button></div>
+<form class="composer" id="chatForm"><input id="question" autocomplete="off" placeholder="Ask SabiMood anything..." aria-label="Your question"><button type="submit">Send ➤</button></form>
+<p class="notice">This starter version uses built-in example answers. A secure AI service connection is needed for real open-ended AI conversations. Do not share passwords or private information.</p>
+</section>
+<section id="tip" class="screen">
+<div class="section-title">✨ Your daily motivation</div><div class="tip"><b>YOU CAN DO IT!</b><p id="tipText">Small steps every day lead to big results. Keep learning!</p></div><button class="primary" style="padding:14px;margin-top:14px" onclick="newTip()">Give me another tip</button>
+</section>
+<div class="footer">SabiMood © 2026 · Made for Nigerian teenagers 🇳🇬</div>
+</div>
+<script>
+const tips=["Small steps every day lead to big results. Keep learning! 🚀","Believe in yourself. You can learn difficult things one step at a time. 🌟","Make a simple plan, start with one task, and keep going. 💪","Mistakes are part of learning. Try again and improve. 📚","Take breaks, drink water and give yourself time to grow. 💧"];
+let tipIndex=new Date().getDate()%tips.length;
+document.getElementById('dailyTip').textContent=tips[tipIndex];document.getElementById('tipText').textContent=tips[tipIndex];
+function showScreen(name){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('show'));document.getElementById(name).classList.add('show');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));document.getElementById(name+'Tab').classList.add('active')}
+function ask(q){showScreen('chat');document.getElementById('question').value=q;sendQuestion()}
+function fill(q){document.getElementById('question').value=q;document.getElementById('question').focus()}
+function answer(q){let s=q.toLowerCase();
+if(/math|homework|equation/.test(s))return "Let's learn together! 📚 Send me the exact maths question. I'll break it into small steps and show you how to solve it. For example, with 2x + 4 = 10, first subtract 4 from both sides: 2x = 6. Then divide by 2: x = 3.";
+if(/food|eat|cook|meal|rice/.test(s))return "🍲 Try simple Nigerian jollof rice. You need rice, tomatoes, pepper, onions, oil, seasoning and water. 1. Blend the tomatoes and pepper. 2. Fry with onions and oil. 3. Add seasoning and water. 4. Add washed rice and cook until soft. Ask an adult for help when using hot oil or a cooker.";
+if(/exercise|workout|fitness/.test(s))return "💪 Try a gentle beginner routine: 8 squats, 8 wall push-ups, 10 marching steps per leg and a 15-second plank. Rest between moves. Start gently, use good form and stop if you feel pain. You do not need a gym!";
+if(/rain|weather|forecast/.test(s))return "🌦️ I can help with weather, but this demo is not connected to live forecasts. I cannot confirm whether it will rain tomorrow in Port Harcourt. Check a trusted weather forecast before making plans.";
+if(/exam|study|pass|timetable/.test(s))return "📚 Here is a simple study plan: 1. Choose one topic. 2. Study for 25 minutes. 3. Take a 5-minute break. 4. Answer practice questions without looking at your notes. 5. Review what you got wrong. Repeat and get enough sleep.";
+if(/plan|money|confidence|people|day/.test(s))return "🌟 Try this: write down your three most important tasks, do the hardest one while you have energy, take breaks, and review your day in the evening. For money, track what comes in and what you spend. Confidence grows with practice.";
+return "That's a good question! 😊 Tell me a little more about what you want to understand, and I'll explain it step by step in simple English. You can also choose Food, Study, Exercise, Daily Life or Weather from the home screen."}
+function addBubble(text,who){let b=document.createElement('div');b.className='bubble '+who;let label=document.createElement('span');label.className='sender';label.textContent=who==='user'?'YOU':'SABIMOOD 🤖';b.append(label,document.createTextNode(text));let box=document.getElementById('chatbox');box.appendChild(b);box.scrollTop=box.scrollHeight}
+function sendQuestion(){let input=document.getElementById('question'),q=input.value.trim();if(!q)return;input.value='';addBubble(q,'user');setTimeout(()=>addBubble(answer(q),'ai'),250)}
+document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();sendQuestion()});
+function newTip(){tipIndex=(tipIndex+1)%tips.length;document.getElementById('tipText').textContent=tips[tipIndex]}
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>

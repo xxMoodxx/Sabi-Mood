@@ -1,0 +1,19 @@
+{
+  "name": "SabiMood \u2014 Life Teacher AI",
+  "short_name": "SabiMood",
+  "description": "A friendly life-learning companion for Nigerian teenagers.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#100d1b",
+  "theme_color": "#100d1b",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
